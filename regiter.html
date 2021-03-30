@@ -1,0 +1,54 @@
+	<?php
+	if(isset($_POST['sign']))
+	{
+$FirstName="Rampal";
+$LastName=$_POST['last_name'];
+$EmailId=$_POST['email_id'];
+$Password=$_POST['password1'];
+$password3=$_POST['password2'];
+$connection=mysqli_connect("localhost","root","","login_name") or die("connection is Fail");
+$query="insert into user values('{$FirstName}','{$LastName}','{$EmailId}','{$Password}')";
+mysqli_query($connection,$query);
+mysqli_close($connection);
+echo "Data inserted";
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="30">
+	<meta name="viewport" content="width=device-width",initial-scale="1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>www.signup.com</title> 
+</head>
+	<body>
+		<center>
+	<div class="container">
+		<form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+			<center><h3>REGISTRATION</h3></center><br><br>
+			<p> Create your account. It's<br>
+			free and only takes a minute</p>
+			<br>
+			<br>
+			<input type="text" name="first_name" placeholder="First Name">
+			<br>
+			<input type="text" name="last_name" placeholder="Last Name">
+			<br>
+			<input type="text" name="email_id" placeholder="Email id">
+			<br>
+		    <input type="password" name="password1" placeholder="Password">
+			<br>
+		    <input type="password" name="password2" placeholder="Confirm Password">
+			<br><br>
+			<input type="checkbox" name="check" id="check1">
+		<label for="check1">I accept the <span>Term of Use</span> & <span>Privacy Policy</span></label>
+			<br><br>
+			<input  class="btn" type="submit" name="sign" value="Register"> 
+		</form>
+		<p>If Already have an Account <span>Sign in</span> </p>
+	</div>
+</center>
+</body>
+</html>
